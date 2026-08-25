@@ -13,15 +13,13 @@
         }
 
         :root {
-            --primary-dark: #1a1a1a;
-            --primary-light: #0f0f0f;
-            --accent: #c9a961;
-            --accent-light: #e8d5a8;
-            --accent-muted: #8b7d6b;
-            --text-primary: #f8f5f1;
-            --text-secondary: #d9cfc4;
-            --border-light: #3a342f;
-            --bg-secondary: #201c19;
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #1a1a1a;
+            --accent: #d4af37;
+            --text-dark: #000000;
+            --text-light: #ffffff;
         }
 
         html {
@@ -29,12 +27,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            color: var(--text-primary);
-            line-height: 1.6;
-            background: var(--primary-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
-            letter-spacing: 0.3px;
+            background: var(--white);
         }
 
         /* Header & Navigation */
@@ -43,232 +38,300 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(15, 15, 15, 0.98);
+            background: var(--black);
+            padding: 1.5rem 2rem;
+            border-bottom: 2px solid var(--accent);
+            transition: all 0.4s ease;
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-light);
-            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 1rem 2rem;
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.4rem;
-            font-weight: 600;
-            letter-spacing: 0px;
-            color: var(--text-primary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
             text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
         }
 
         .logo span {
-            color: var(--accent-light);
+            color: var(--accent);
         }
 
-        nav ul {
+        nav {
             display: flex;
-            list-style: none;
-            gap: 2.5rem;
+            gap: 3rem;
+            align-items: center;
         }
 
         nav a {
+            color: var(--white);
             text-decoration: none;
-            color: #e8e4dc;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
             font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--accent-light);
-        }
-
-        nav a::after {
+        nav a::before {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 1px;
-            background: var(--accent-light);
-            transition: width 0.3s ease;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        nav a:hover::after {
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::before {
             width: 100%;
         }
 
         .phone {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-weight: 500;
         }
 
-        /* Page Header */
-        .page-hero {
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+            color: var(--white);
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
             margin-top: 60px;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(184, 149, 106, 0.15) 0%, rgba(107, 93, 82, 0.1) 100%);
-            border-bottom: 1px solid var(--border-light);
         }
 
-        .page-hero-content {
-            max-width: 1200px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
         }
 
-        .page-hero h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 0px;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .page-hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            line-height: 1.7;
-        }
-
-        /* Main Sections */
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 0px;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .section-header p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Extensions Overview */
-        .extensions-overview {
-            background: var(--bg-secondary);
-        }
-
-        .overview-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-            margin-top: 2rem;
-        }
-
-        .overview-text p {
-            color: var(--text-secondary);
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
             margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            display: block;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
             line-height: 1.8;
         }
 
-        .retail-highlight {
-            background: linear-gradient(135deg, rgba(184, 149, 106, 0.15) 0%, rgba(107, 93, 82, 0.1) 100%);
-            padding: 2rem;
-            border-left: 4px solid var(--accent-light);
-            border-radius: 2px;
-            margin-top: 2rem;
-        }
-
-        .retail-highlight h4 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .retail-highlight p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 0.8rem;
-        }
-
-        .brands-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .brand-badge {
-            background: rgba(184, 149, 106, 0.1);
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--accent-muted);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--accent-light);
-        }
-
-        /* Service Types */
-        .service-types {
-            background: var(--primary-light);
-        }
-
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .service-type {
-            background: var(--bg-secondary);
-            padding: 2.5rem;
-            border-radius: 2px;
-            border: 1px solid var(--border-light);
+        .cta-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
             transition: all 0.4s ease;
+            border: 2px solid var(--accent);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            cursor: pointer;
         }
 
-        .service-type:hover {
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent-light);
-            background: rgba(31, 27, 24, 0.8);
+        .cta-primary:hover {
+            background: var(--black);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
-        .service-type h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light-gray);
+            padding: 120px 2rem;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--black), transparent);
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--black);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: rgba(0, 0, 0, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: 50px;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: -1;
+            transition: left 0.6s ease;
+        }
+
+        .service-card.in-view {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+        }
+
+        .service-card:hover::before {
+            left: 0;
+        }
+
+        .service-card:hover h3,
+        .service-card:hover p,
+        .service-card:hover .price-item {
+            color: var(--white);
+        }
+
+        .service-card:hover .price-amount {
+            color: var(--accent);
         }
 
         .service-icon {
-            font-size: 1.8rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-bottom: 2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            transition: color 0.4s ease;
         }
 
         .service-description {
-            color: #d9cfc4;
-            font-size: 0.95rem;
-            line-height: 1.7;
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 1rem;
             margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-light);
+            line-height: 1.7;
+            transition: color 0.4s ease;
         }
 
         .pricing-list {
@@ -278,12 +341,14 @@
         }
 
         .price-item {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 1rem;
-            align-items: baseline;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(184, 149, 106, 0.15);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.95rem;
+            color: rgba(0, 0, 0, 0.8);
+            transition: color 0.4s ease;
         }
 
         .price-item:last-child {
@@ -291,126 +356,275 @@
             padding-bottom: 0;
         }
 
-        .price-description {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
         .price-amount {
-            font-weight: 600;
-            color: var(--accent-light);
-            white-space: nowrap;
-            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent);
+            transition: color 0.4s ease;
         }
 
         .note {
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: rgba(0, 0, 0, 0.6);
             font-style: italic;
             margin-top: 0.5rem;
+            transition: color 0.4s ease;
         }
 
-        /* Why Extensions */
-        .why-extensions {
-            background: var(--bg-secondary);
+        .service-card:hover .note {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--black);
+            color: var(--white);
+            padding: 120px 2rem;
+            position: relative;
+        }
+
+        .features::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .feature-item {
-            padding: 2rem;
-            text-align: center;
-            border-radius: 2px;
-            background: linear-gradient(135deg, rgba(184, 149, 106, 0.1) 0%, rgba(107, 93, 82, 0.05) 100%);
-            border: 1px solid rgba(184, 149, 106, 0.1);
+            padding: 40px;
+            border-left: 4px solid var(--accent);
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0;
+            transition: all 0.6s ease;
+            transform: translateX(-30px);
+            opacity: 0;
+        }
+
+        .feature-item.in-view {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
         }
 
         .feature-icon {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-bottom: 2rem;
         }
 
         .feature-item h4 {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .feature-item p {
-            color: var(--text-secondary);
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Contact CTA */
-        .contact-cta {
-            background: linear-gradient(135deg, rgba(184, 149, 106, 0.2) 0%, rgba(107, 93, 82, 0.15) 100%);
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
-            border-radius: 2px;
-            border: 1px solid rgba(184, 149, 106, 0.15);
+        /* Overview Section */
+        .overview {
+            background: var(--white);
+            padding: 120px 2rem;
+            position: relative;
         }
 
-        .contact-cta h3 {
-            font-size: 1.8rem;
-            color: var(--text-primary);
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .overview-text h3 {
+            font-size: 2.2rem;
+            color: var(--black);
             margin-bottom: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            font-weight: 700;
         }
 
-        .contact-cta p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 1rem;
+        .overview-text p {
+            font-size: 1.05rem;
+            color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 0.9rem 2.2rem;
-            background: var(--accent-light);
-            color: var(--primary-light);
-            text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--accent-light);
-            cursor: pointer;
-            border-radius: 2px;
-            font-weight: 500;
+        .retail-box {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px;
+            border: 2px solid var(--accent);
+            margin-top: 2rem;
+            animation: slideInRight 0.8s ease-out;
         }
 
-        .cta-button:hover {
+        .retail-box h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .retail-box p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .brand-badge {
             background: transparent;
-            color: var(--accent-light);
-            transform: translateY(-2px);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.8rem 1.2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .cta-phone {
-            display: block;
-            margin-top: 1rem;
-            font-size: 1rem;
-            color: var(--text-secondary);
+        .brand-badge:hover {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            border: 2px solid var(--accent);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 4rem;
+            animation: slideInLeft 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 60%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+            color: var(--white);
+            padding: 100px 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h3 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid var(--accent);
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .cta-secondary:hover {
+            background: var(--accent);
+            color: var(--black);
+            transform: translateY(-3px);
         }
 
         /* Footer */
         footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 3rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 50px 2rem;
             text-align: center;
-            margin-top: 4rem;
+            border-top: 2px solid var(--accent);
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -422,9 +636,11 @@
         }
 
         .social-links a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
+            font-weight: 600;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .social-links a:hover {
@@ -433,60 +649,113 @@
 
         .footer-bottom {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.6);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 2rem;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .back-link:hover {
-            color: var(--primary-dark);
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        /* Scroll animations */
-        .scroll-fade {
-            opacity: 0;
-            transform: translateY(20px);
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .scroll-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease-out;
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
+            header {
+                padding: 1rem;
             }
 
-            .page-hero h1 {
+            nav {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 120px 1.5rem 80px;
+            }
+
+            .hero h1 {
                 font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .service-card {
+                padding: 30px;
             }
 
             .overview-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .services-container {
-                grid-template-columns: 1fr;
+            .overview-text h3 {
+                font-size: 1.8rem;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
-            .section-header h2 {
-                font-size: 1.6rem;
+            .cta-section h3 {
+                font-size: 2rem;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-primary, .cta-secondary {
+                width: 100%;
             }
         }
     </style>
@@ -495,47 +764,50 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <a href="index.html" class="logo"><span>Diverse Salon. </span></a>
+            <a href="#" class="logo"><span>Diverse</span> Salon</a>
             <nav>
-                <ul>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#testimonials">Reviews</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
+                <a href="#services">Services</a>
+                <a href="#features">Why Us</a>
+                <a href="#overview">About</a>
+                <a href="#contact">Contact</a>
             </nav>
-            <div class="phone">📞 (408) 377-6000</div>
+            <div class="phone">(408) 377-6000</div>
         </div>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <div class="page-hero-content">
-            <a href="index.html" class="back-link">← Back to Home</a>
-            <h1>Hair Extensions</h1>
-            <p>Instant length, volume, and color in no time. Our extensive knowledge of hair extensions will guide you towards choosing the best option for your hair type. We carry premium brands and virgin unprocessed hair right in our retail area.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Elevate Your Hair <span>Transform Your Look</span></h1>
+            <p>Premium hair extensions tailored to your style. From braid-ins to tape-ins, we bring your vision to life with expert precision and luxury brands.</p>
+            <a href="#services" class="cta-primary">Explore Our Services</a>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
         </div>
     </section>
 
-    <!-- Extensions Overview -->
-    <section class="extensions-overview">
-        <div class="section-header">
-            <h2>Why Choose Our Extensions</h2>
-        </div>
+    <!-- Overview Section -->
+    <section class="overview" id="overview">
         <div class="overview-grid">
+            <div>
+                <div class="image-placeholder"></div>
+            </div>
             <div class="overview-text">
-                <p>At Diverse Salon, we specialize in finding the perfect extension match for every client. Our stylists have extensive knowledge of different textures, lengths, and installation methods to help you achieve your desired look.</p>
+                <h3>Why Choose Diverse Salon</h3>
+                <p>We specialize in finding the perfect extension match for every client. Our stylists have extensive knowledge of different textures, lengths, and installation methods to help you achieve your desired look.</p>
                 <p>We carry a wide range of premium hair options from trusted brands, including virgin unprocessed hair. Whether you're looking for a subtle enhancement or a dramatic transformation, we have the expertise and inventory to make it happen.</p>
                 <p>All of our extension services are designed to keep your natural hair healthy while giving you the length, volume, and color you've always wanted.</p>
-            </div>
-            <div>
-                <div class="retail-highlight">
+                
+                <div class="retail-box">
                     <h4>Browse Our Retail Selection</h4>
-                    <p>Visit our salon to browse our extensive retail collection, or call us to check our current inventory. Our stylists can guide you through options and help you select the best hair for your needs.</p>
-                    <div class="brands-list">
+                    <p>Visit our salon to browse our extensive collection or call us to check inventory.</p>
+                    <div class="brands-grid">
                         <div class="brand-badge">Bohyme</div>
                         <div class="brand-badge">Janet</div>
-                        <div class="brand-badge">Elegante Hair</div>
+                        <div class="brand-badge">Elegante</div>
                         <div class="brand-badge">Babe</div>
                         <div class="brand-badge">Virgin Hair</div>
                         <div class="brand-badge">+ More</div>
@@ -545,74 +817,72 @@
         </div>
     </section>
 
-    <!-- Service Types & Pricing -->
-    <section class="service-types">
+    <!-- Services Section -->
+    <section class="services" id="services">
         <div class="section-header">
-            <h2>Extension Methods & Pricing</h2>
+            <h2>Our Extension Methods</h2>
             <p>Choose the installation method that works best for your lifestyle and hair goals. Prices do not include the cost of hair unless otherwise stated.</p>
         </div>
 
-        <div class="services-container">
+        <div class="services-grid">
             <!-- Braid-In Extensions -->
-            <div class="service-type scroll-fade">
-                <h3><span class="service-icon">🪡</span> Braid-In Extensions</h3>
+            <div class="service-card">
+                <div class="service-icon"></div>
+                <h3>Braid-In Extensions</h3>
                 <p class="service-description">Protective style with installed tracks that can last several weeks. Great for adding volume and length while protecting your natural hair.</p>
                 <div class="pricing-list">
                     <div class="price-item">
-                        <span class="price-description">Each track installed</span>
+                        <span>Each track installed</span>
                         <span class="price-amount">$20</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Each track removed & reinstalled</span>
+                        <span>Track removed & reinstalled</span>
                         <span class="price-amount">$25</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Each track removed (not reinstalled)</span>
+                        <span>Track removed only</span>
                         <span class="price-amount">$10</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Full weave</span>
+                        <span>Full weave</span>
                         <span class="price-amount">$150</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Full weave with closure</span>
+                        <span>Full weave with closure</span>
                         <span class="price-amount">$200</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Quick weave</span>
+                        <span>Quick weave</span>
                         <span class="price-amount">$80+</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-description">Fashion bang extension installation</span>
-                        <span class="price-amount">$20</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Tape Extensions -->
-            <div class="service-type scroll-fade">
-                <h3><span class="service-icon">✨</span> Tape-In Extensions</h3>
+            <!-- Tape-In Extensions -->
+            <div class="service-card">
+                <div class="service-icon"></div>
+                <h3>Tape-In Extensions</h3>
                 <p class="service-description">Seamless, lightweight application perfect for fine or thin hair. Easy to maintain and reusable for multiple applications.</p>
                 <div class="pricing-list">
                     <div class="price-item">
-                        <span class="price-description">Per single piece</span>
+                        <span>Per single piece</span>
                         <span class="price-amount">$4.50</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Per sandwiched set</span>
+                        <span>Per sandwiched set</span>
                         <span class="price-amount">$9.00</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Per pack (10 pieces / 5 sandwiched sets)</span>
+                        <span>Per pack (10 pieces)</span>
                         <span class="price-amount">$45</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Single fashion color</span>
+                        <span>Fashion color single</span>
                         <span class="price-amount">$15</span>
                     </div>
                     <p class="note">Fashion color includes price of hair.</p>
                     <div class="price-item">
-                        <span class="price-description">Fashion color set</span>
+                        <span>Fashion color set</span>
                         <span class="price-amount">$30</span>
                     </div>
                     <p class="note">Fashion color set includes price of hair.</p>
@@ -620,16 +890,17 @@
             </div>
 
             <!-- I-Tip Bead Extensions -->
-            <div class="service-type scroll-fade">
-                <h3><span class="service-icon">💎</span> I-Tip Bead Extensions</h3>
+            <div class="service-card">
+                <div class="service-icon"></div>
+                <h3>I-Tip Bead Extensions</h3>
                 <p class="service-description">Individual strand fusion extensions with beads. Durable, natural-looking, and perfect for fine or curly hair types.</p>
                 <div class="pricing-list">
                     <div class="price-item">
-                        <span class="price-description">Per individual piece</span>
+                        <span>Per individual piece</span>
                         <span class="price-amount">$4</span>
                     </div>
                     <div class="price-item">
-                        <span class="price-description">Single fashion color</span>
+                        <span>Single fashion color</span>
                         <span class="price-amount">$10</span>
                     </div>
                     <p class="note">Fashion color includes price of hair.</p>
@@ -638,51 +909,57 @@
         </div>
     </section>
 
-    <!-- Why Extensions Section -->
-    <section class="why-extensions">
+    <!-- Features Section -->
+    <section class="features" id="features">
         <div class="section-header">
-            <h2>The Benefits of Hair Extensions</h2>
+            <h2>The Power of Extensions</h2>
         </div>
+
         <div class="features-grid">
-            <div class="feature-item scroll-fade">
-                <div class="feature-icon">⏱️</div>
-                <h4>Instant Transformation</h4>
-                <p>Get the length, volume, and fullness you want without waiting for your natural hair to grow. See results immediately.</p>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h4>Instant Results</h4>
+                <p>Get the length, volume, and fullness you want without waiting months for your natural hair to grow.</p>
             </div>
-            <div class="feature-item scroll-fade">
-                <div class="feature-icon">🎨</div>
-                <h4>Experiment with Color</h4>
-                <p>Try bold colors and styles without committing to permanent changes. Perfect for testing new looks before going all-in.</p>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h4>Risk-Free Color</h4>
+                <p>Experiment with bold colors and styles without permanent commitment. Test new looks before going all-in.</p>
             </div>
-            <div class="feature-item scroll-fade">
-                <div class="feature-icon">🛡️</div>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
                 <h4>Protective Styling</h4>
-                <p>Extensions provide protective styles that help minimize damage to your natural hair while you achieve your desired look.</p>
+                <p>Keep your natural hair healthy while extensions handle the styling. Minimal manipulation, maximum protection.</p>
             </div>
-            <div class="feature-item scroll-fade">
-                <div class="feature-icon">💪</div>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
                 <h4>Added Volume</h4>
-                <p>If you have fine or thin hair, extensions add fullness and thickness for a more voluminous style that lasts.</p>
+                <p>Transform fine or thin hair into a full, voluminous style that lasts and looks incredible.</p>
             </div>
-            <div class="feature-item scroll-fade">
-                <div class="feature-icon">✨</div>
-                <h4>Versatility</h4>
-                <p>With extensions, you can style your hair in countless ways. Create updos, braids, waves, and more with confidence.</p>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h4>Endless Versatility</h4>
+                <p>Create updos, braids, waves, and more. Extensions give you endless styling possibilities.</p>
             </div>
-            <div class="feature-item scroll-fade">
-                <div class="feature-icon">♻️</div>
-                <h4>Reusable Options</h4>
-                <p>Many of our extension methods are reusable and can be removed and reinstalled, making them a smart investment.</p>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h4>Reusable Investment</h4>
+                <p>Many methods are reusable and removable. Get more value with extensions that last.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section class="contact-cta">
-        <h3>Ready to Elevate Your Hair?</h3>
-        <p>Let our experienced stylists help you find the perfect extension solution for your hair type and lifestyle.</p>
-        <a href="tel:4083776000" class="cta-button">Call to Book Your Consultation</a>
-        <span class="cta-phone">Or visit us in Campbell • Walk-ins welcome</span>
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h3>Ready to Transform?</h3>
+            <p>Let our experienced stylists guide you through selecting the perfect extensions for your hair type and lifestyle. Book your consultation today.</p>
+            <div class="cta-buttons">
+                <a href="tel:4083776000" class="cta-primary">Call Now</a>
+                <a href="#" class="cta-secondary">Book Consultation</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.95rem; color: rgba(255,255,255,0.7);">Visit us in Campbell • Walk-ins welcome</p>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -700,25 +977,7 @@
     </footer>
 
     <script>
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-fade').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Smooth scroll for navigation
+        // Smooth scroll behavior
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -732,12 +991,72 @@
         // Header scroll effect
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > 50) {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
             } else {
-                header.style.boxShadow = 'none';
+                header.classList.remove('scrolled');
             }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and feature items
+        document.querySelectorAll('.service-card, .feature-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax scroll effect
+        const parallaxElements = document.querySelectorAll('.hero, .cta-section');
+        window.addEventListener('scroll', () => {
+            parallaxElements.forEach(element => {
+                const scrollPosition = window.pageYOffset;
+                const elementOffset = element.offsetTop;
+                const distance = scrollPosition - elementOffset;
+                
+                if (distance < window.innerHeight && distance > -element.offsetHeight) {
+                    element.style.backgroundPosition = `center ${distance * 0.5}px`;
+                }
+            });
+        });
+
+        // Mouse hover effect on service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                document.querySelectorAll('.service-card').forEach(c => {
+                    if (c !== this) {
+                        c.style.opacity = '0.7';
+                    }
+                });
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                document.querySelectorAll('.service-card').forEach(c => {
+                    c.style.opacity = '1';
+                });
+            });
+        });
+
+        // Brand badge interaction
+        document.querySelectorAll('.brand-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                this.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
         });
     </script>
 </body>
