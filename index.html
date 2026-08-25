@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Diverse Salon in Campbell - Hair color, cuts, extensions, and skin care for all hair types and textures.">
-    <title>Diverse Salon | Campbell Hair & Skin Care</title>
+    <meta name="description" content="Hair extensions services and pricing at Diverse Salon in Campbell - Braid-in, Tape-in, and I-Tip extensions.">
+    <title>Hair Extensions Services | Diverse Salon</title>
     <style>
         * {
             margin: 0;
@@ -13,13 +13,15 @@
         }
 
         :root {
-            --primary-dark: #2a2a2a;
-            --primary-light: #fafaf8;
-            --accent: #d4a574;
-            --accent-muted: #e8dcc8;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666;
-            --border-light: #f0f0f0;
+            --primary-dark: #1a1a1a;
+            --primary-light: #0f0f0f;
+            --accent: #c9a961;
+            --accent-light: #e8d5a8;
+            --accent-muted: #8b7d6b;
+            --text-primary: #f8f5f1;
+            --text-secondary: #d9cfc4;
+            --border-light: #3a342f;
+            --bg-secondary: #201c19;
         }
 
         html {
@@ -32,6 +34,7 @@
             line-height: 1.6;
             background: var(--primary-light);
             overflow-x: hidden;
+            letter-spacing: 0.3px;
         }
 
         /* Header & Navigation */
@@ -40,7 +43,7 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(250, 250, 248, 0.95);
+            background: rgba(15, 15, 15, 0.98);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-light);
             transition: all 0.3s ease;
@@ -58,12 +61,13 @@
         .logo {
             font-size: 1.4rem;
             font-weight: 600;
-            letter-spacing: -0.5px;
-            color: var(--primary-dark);
+            letter-spacing: 0px;
+            color: var(--text-primary);
+            text-decoration: none;
         }
 
         .logo span {
-            color: var(--accent);
+            color: var(--accent-light);
         }
 
         nav ul {
@@ -74,14 +78,15 @@
 
         nav a {
             text-decoration: none;
-            color: var(--text-primary);
+            color: #e8e4dc;
             font-size: 0.95rem;
             transition: color 0.3s ease;
             position: relative;
+            font-weight: 500;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: var(--accent-light);
         }
 
         nav a::after {
@@ -91,7 +96,7 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--accent);
+            background: var(--accent-light);
             transition: width 0.3s ease;
         }
 
@@ -105,358 +110,294 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-weight: 500;
         }
 
-        /* Hero Section */
-        .hero {
+        /* Page Header */
+        .page-hero {
             margin-top: 60px;
-            position: relative;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(184, 149, 106, 0.15) 0%, rgba(107, 93, 82, 0.1) 100%);
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(42, 42, 42, 0.1) 0%, rgba(212, 165, 116, 0.08) 100%);
-            z-index: 0;
+        .page-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .hero-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            z-index: 1;
-            animation: zoom 20s ease-in-out infinite;
-        }
-
-        @keyframes zoom {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(250, 250, 248, 0) 0%, rgba(250, 250, 248, 0.3) 100%);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            max-width: 700px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 4rem;
+        .page-hero h1 {
+            font-size: 2.5rem;
             font-weight: 300;
-            letter-spacing: -1px;
+            letter-spacing: 0px;
             margin-bottom: 1rem;
-            color: var(--primary-dark);
+            color: var(--text-primary);
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .page-hero p {
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 300;
+            max-width: 600px;
+            line-height: 1.7;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 0.9rem 2.2rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--accent);
-            cursor: pointer;
-            border-radius: 2px;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 4;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        .scroll-indicator svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--accent);
-            fill: none;
-            stroke-width: 2;
-        }
-
-        /* Sections */
+        /* Main Sections */
         section {
-            padding: 6rem 2rem;
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 300;
-            letter-spacing: -0.5px;
+            letter-spacing: 0px;
             margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
         .section-header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            max-width: 500px;
-            margin: 0 auto;
-            font-weight: 300;
+            line-height: 1.7;
         }
 
-        /* Services Section */
-        .services {
-            background: linear-gradient(135deg, rgba(250, 250, 248, 0.5) 0%, rgba(232, 220, 200, 0.3) 100%);
+        /* Extensions Overview */
+        .extensions-overview {
+            background: var(--bg-secondary);
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid var(--border-light);
-            border-radius: 2px;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border-color: var(--accent);
-        }
-
-        .service-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border-radius: 2px;
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* About Section */
-        .about {
-            background: white;
-        }
-
-        .about-content {
+        .overview-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 2rem;
         }
 
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-        }
-
-        .about-text p {
+        .overview-text p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             line-height: 1.8;
         }
 
-        .about-image {
-            position: relative;
-            overflow: hidden;
+        .retail-highlight {
+            background: linear-gradient(135deg, rgba(184, 149, 106, 0.15) 0%, rgba(107, 93, 82, 0.1) 100%);
+            padding: 2rem;
+            border-left: 4px solid var(--accent-light);
             border-radius: 2px;
+            margin-top: 2rem;
         }
 
-        .about-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
+        .retail-highlight h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Stats Section */
-        .stats {
-            background: linear-gradient(135deg, rgba(42, 42, 42, 0.95) 0%, rgba(42, 42, 42, 0.85) 100%);
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            border-bottom: 2px solid var(--accent);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .stat-item:nth-child(1) { animation-delay: 0.1s; }
-        .stat-item:nth-child(2) { animation-delay: 0.2s; }
-        .stat-item:nth-child(3) { animation-delay: 0.3s; }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: linear-gradient(135deg, rgba(250, 250, 248, 0.5) 0%, rgba(232, 220, 200, 0.3) 100%);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-left: 4px solid var(--accent);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .testimonial-text {
-            font-style: italic;
+        .retail-highlight p {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
             line-height: 1.7;
+            margin-bottom: 0.8rem;
         }
 
-        .testimonial-author {
+        .brands-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .brand-badge {
+            background: rgba(184, 149, 106, 0.1);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-muted);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent-light);
+        }
+
+        /* Service Types */
+        .service-types {
+            background: var(--primary-light);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-type {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 2px;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+        }
+
+        .service-type:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-light);
+            background: rgba(31, 27, 24, 0.8);
+        }
+
+        .service-type h3 {
+            font-size: 1.4rem;
             font-weight: 600;
-            color: var(--primary-dark);
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
-        /* Contact Section */
-        .contact {
-            background: white;
-            text-align: center;
+        .service-icon {
+            font-size: 1.8rem;
         }
 
-        .contact-info {
+        .service-description {
+            color: #d9cfc4;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .pricing-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .price-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: baseline;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(184, 149, 106, 0.15);
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .price-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .price-amount {
+            font-weight: 600;
+            color: var(--accent-light);
+            white-space: nowrap;
+            font-size: 0.95rem;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Why Extensions */
+        .why-extensions {
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 2rem;
+            margin-top: 2.5rem;
         }
 
-        .contact-item h4 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-dark);
+        .feature-item {
+            padding: 2rem;
+            text-align: center;
+            border-radius: 2px;
+            background: linear-gradient(135deg, rgba(184, 149, 106, 0.1) 0%, rgba(107, 93, 82, 0.05) 100%);
+            border: 1px solid rgba(184, 149, 106, 0.1);
         }
 
-        .contact-item p {
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .feature-item p {
             color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        .contact-item a {
-            color: var(--accent);
+        /* Contact CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, rgba(184, 149, 106, 0.2) 0%, rgba(107, 93, 82, 0.15) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-radius: 2px;
+            border: 1px solid rgba(184, 149, 106, 0.15);
+        }
+
+        .contact-cta h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            background: var(--accent-light);
+            color: var(--primary-light);
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-light);
+            cursor: pointer;
+            border-radius: 2px;
+            font-weight: 500;
         }
 
-        .contact-item a:hover {
-            color: var(--primary-dark);
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .cta-phone {
+            display: block;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
         }
 
         /* Footer */
@@ -465,6 +406,7 @@
             color: white;
             padding: 3rem 2rem;
             text-align: center;
+            margin-top: 4rem;
         }
 
         .footer-content {
@@ -496,10 +438,23 @@
             padding-top: 2rem;
         }
 
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-dark);
+        }
+
         /* Scroll animations */
         .scroll-fade {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
 
         .scroll-fade.visible {
@@ -508,44 +463,30 @@
             transition: all 0.6s ease-out;
         }
 
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-dark);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
             }
 
-            .mobile-menu-toggle {
-                display: block;
+            .page-hero h1 {
+                font-size: 2rem;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .overview-grid {
+                grid-template-columns: 1fr;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .services-container {
+                grid-template-columns: 1fr;
             }
 
-            .about-content {
+            .features-grid {
                 grid-template-columns: 1fr;
             }
 
             .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -554,147 +495,194 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <div class="logo"><span>Diverse Salon. </span></div>
+            <a href="index.html" class="logo"><span>Diverse Salon. </span></a>
             <nav>
                 <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#testimonials">Reviews</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#testimonials">Reviews</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="phone">📞 (408) 377-6000</div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-background"></div>
-        <img src="images/IMG_4392.jpeg" alt="Diverse Salon" class="hero-image">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Diverse Salon</h1>
-            <p>Hair color, cuts, extensions, and skincare for all hair types and textures</p>
-            <a href="#contact" class="cta-button">Book Your Appointment</a>
-        </div>
-        <div class="scroll-indicator">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 15l-4-4h8l-4 4m0-8v10" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1>Hair Extensions</h1>
+            <p>Instant length, volume, and color in no time. Our extensive knowledge of hair extensions will guide you towards choosing the best option for your hair type. We carry premium brands and virgin unprocessed hair right in our retail area.</p>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Extensions Overview -->
+    <section class="extensions-overview">
         <div class="section-header">
-            <h2>Our Services</h2>
-            <p>From color and cuts to extensions and skincare, we specialize in transforming your vision</p>
+            <h2>Why Choose Our Extensions</h2>
         </div>
-        <div class="services-grid">
-            <div class="service-card scroll-fade">
-                <img src="images/img_10.jpg" alt="Hair Color Service">
-                <h3>Hair Color</h3>
-                <p>Specializing in the latest color trends to create the hair of your dreams. Expert color correction and vibrant hues.</p>
+        <div class="overview-grid">
+            <div class="overview-text">
+                <p>At Diverse Salon, we specialize in finding the perfect extension match for every client. Our stylists have extensive knowledge of different textures, lengths, and installation methods to help you achieve your desired look.</p>
+                <p>We carry a wide range of premium hair options from trusted brands, including virgin unprocessed hair. Whether you're looking for a subtle enhancement or a dramatic transformation, we have the expertise and inventory to make it happen.</p>
+                <p>All of our extension services are designed to keep your natural hair healthy while giving you the length, volume, and color you've always wanted.</p>
             </div>
-            <div class="service-card scroll-fade">
-                <img src="images/img_04.jpg" alt="Hair Cut Service">
-                <h3>Hair Cuts</h3>
-                <p>All styles and lengths for women, men, and kids. From classic cuts to modern styles, we create the perfect look.</p>
-            </div>
-            <div class="service-card scroll-fade">
-                <img src="images/img_06.jpg" alt="Hair Extensions">
-                <h3>Hair Extensions</h3>
-                <p>Braid-in, tape-in, I-tape bead, and custom clip-in styles using the highest quality human remy hair.</p>
-            </div>
-            <div class="service-card scroll-fade">
-                <img src="images/img_08.jpg" alt="Skin Care">
-                <h3>Skin Care</h3>
-                <p>Facials, threading, waxing, eyelash extensions, and more. Beautiful skin is within your reach.</p>
+            <div>
+                <div class="retail-highlight">
+                    <h4>Browse Our Retail Selection</h4>
+                    <p>Visit our salon to browse our extensive retail collection, or call us to check our current inventory. Our stylists can guide you through options and help you select the best hair for your needs.</p>
+                    <div class="brands-list">
+                        <div class="brand-badge">Bohyme</div>
+                        <div class="brand-badge">Janet</div>
+                        <div class="brand-badge">Elegante Hair</div>
+                        <div class="brand-badge">Babe</div>
+                        <div class="brand-badge">Virgin Hair</div>
+                        <div class="brand-badge">+ More</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- Service Types & Pricing -->
+    <section class="service-types">
         <div class="section-header">
-            <h2>Why Choose Diverse</h2>
+            <h2>Extension Methods & Pricing</h2>
+            <p>Choose the installation method that works best for your lifestyle and hair goals. Prices do not include the cost of hair unless otherwise stated.</p>
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>We Celebrate Diversity</h3>
-                <p>Diverse Salon takes great pride in our ability to create the client's vision on all hair types and textures. Our knowledgeable stylists bring diverse backgrounds and deep love for our art to every client.</p>
-                <p>Each team member is dedicated to understanding your unique needs and transforming your hair into the perfect image you've always dreamed of.</p>
-                <p>We use only the highest quality products and techniques to ensure your hair remains healthy, vibrant, and beautiful.</p>
+
+        <div class="services-container">
+            <!-- Braid-In Extensions -->
+            <div class="service-type scroll-fade">
+                <h3><span class="service-icon">🪡</span> Braid-In Extensions</h3>
+                <p class="service-description">Protective style with installed tracks that can last several weeks. Great for adding volume and length while protecting your natural hair.</p>
+                <div class="pricing-list">
+                    <div class="price-item">
+                        <span class="price-description">Each track installed</span>
+                        <span class="price-amount">$20</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Each track removed & reinstalled</span>
+                        <span class="price-amount">$25</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Each track removed (not reinstalled)</span>
+                        <span class="price-amount">$10</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Full weave</span>
+                        <span class="price-amount">$150</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Full weave with closure</span>
+                        <span class="price-amount">$200</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Quick weave</span>
+                        <span class="price-amount">$80+</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Fashion bang extension installation</span>
+                        <span class="price-amount">$20</span>
+                    </div>
+                </div>
             </div>
-            <div class="about-image">
-                <img src="images/img_02.jpg" alt="Diverse Salon Team">
+
+            <!-- Tape Extensions -->
+            <div class="service-type scroll-fade">
+                <h3><span class="service-icon">✨</span> Tape-In Extensions</h3>
+                <p class="service-description">Seamless, lightweight application perfect for fine or thin hair. Easy to maintain and reusable for multiple applications.</p>
+                <div class="pricing-list">
+                    <div class="price-item">
+                        <span class="price-description">Per single piece</span>
+                        <span class="price-amount">$4.50</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Per sandwiched set</span>
+                        <span class="price-amount">$9.00</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Per pack (10 pieces / 5 sandwiched sets)</span>
+                        <span class="price-amount">$45</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Single fashion color</span>
+                        <span class="price-amount">$15</span>
+                    </div>
+                    <p class="note">Fashion color includes price of hair.</p>
+                    <div class="price-item">
+                        <span class="price-description">Fashion color set</span>
+                        <span class="price-amount">$30</span>
+                    </div>
+                    <p class="note">Fashion color set includes price of hair.</p>
+                </div>
+            </div>
+
+            <!-- I-Tip Bead Extensions -->
+            <div class="service-type scroll-fade">
+                <h3><span class="service-icon">💎</span> I-Tip Bead Extensions</h3>
+                <p class="service-description">Individual strand fusion extensions with beads. Durable, natural-looking, and perfect for fine or curly hair types.</p>
+                <div class="pricing-list">
+                    <div class="price-item">
+                        <span class="price-description">Per individual piece</span>
+                        <span class="price-amount">$4</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-description">Single fashion color</span>
+                        <span class="price-amount">$10</span>
+                    </div>
+                    <p class="note">Fashion color includes price of hair.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="section-header" style="color: white;">
-            <h2 style="color: white;">Trusted by Our Community</h2>
-        </div>
-        <div class="stats-grid">
-            <div class="stat-item scroll-fade">
-                <div class="stat-number">20+</div>
-                <div class="stat-label">Years of Excellence</div>
-            </div>
-            <div class="stat-item scroll-fade">
-                <div class="stat-number">5★</div>
-                <div class="stat-label">Customer Rating</div>
-            </div>
-            <div class="stat-item scroll-fade">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Customer Satisfaction</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <!-- Why Extensions Section -->
+    <section class="why-extensions">
         <div class="section-header">
-            <h2>What Our Clients Say</h2>
+            <h2>The Benefits of Hair Extensions</h2>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card scroll-fade">
-                <div class="testimonial-text">"Diverse Salon is wonderful! Their work is top notch. Since coming here I'm literally a new woman and couldn't be happier."</div>
-                <div class="testimonial-author">— Patty P.</div>
+        <div class="features-grid">
+            <div class="feature-item scroll-fade">
+                <div class="feature-icon">⏱️</div>
+                <h4>Instant Transformation</h4>
+                <p>Get the length, volume, and fullness you want without waiting for your natural hair to grow. See results immediately.</p>
             </div>
-            <div class="testimonial-card scroll-fade">
-                <div class="testimonial-text">"The stylists here really know their craft. I love how they take time to understand exactly what I want and deliver every time."</div>
-                <div class="testimonial-author">— Maria G.</div>
+            <div class="feature-item scroll-fade">
+                <div class="feature-icon">🎨</div>
+                <h4>Experiment with Color</h4>
+                <p>Try bold colors and styles without committing to permanent changes. Perfect for testing new looks before going all-in.</p>
             </div>
-            <div class="testimonial-card scroll-fade">
-                <div class="testimonial-text">"Walk-ins are always welcome, but my appointment experience is seamless. Best salon in Campbell by far."</div>
-                <div class="testimonial-author">— Alex R.</div>
+            <div class="feature-item scroll-fade">
+                <div class="feature-icon">🛡️</div>
+                <h4>Protective Styling</h4>
+                <p>Extensions provide protective styles that help minimize damage to your natural hair while you achieve your desired look.</p>
+            </div>
+            <div class="feature-item scroll-fade">
+                <div class="feature-icon">💪</div>
+                <h4>Added Volume</h4>
+                <p>If you have fine or thin hair, extensions add fullness and thickness for a more voluminous style that lasts.</p>
+            </div>
+            <div class="feature-item scroll-fade">
+                <div class="feature-icon">✨</div>
+                <h4>Versatility</h4>
+                <p>With extensions, you can style your hair in countless ways. Create updos, braids, waves, and more with confidence.</p>
+            </div>
+            <div class="feature-item scroll-fade">
+                <div class="feature-icon">♻️</div>
+                <h4>Reusable Options</h4>
+                <p>Many of our extension methods are reusable and can be removed and reinstalled, making them a smart investment.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="section-header">
-            <h2>Get In Touch</h2>
-            <p>Visit us in Campbell or give us a call. Walk-ins welcome, appointments appreciated.</p>
-        </div>
-        <div class="contact-info">
-            <div class="contact-item scroll-fade">
-                <h4>📍 Address</h4>
-                <p>821 Union Avenue<br>Campbell, CA 95008</p>
-            </div>
-            <div class="contact-item scroll-fade">
-                <h4>📞 Phone</h4>
-                <p><a href="tel:4083776000">(408) 377-6000</a></p>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Walk-ins Welcome</p>
-            </div>
-            <div class="contact-item scroll-fade">
-                <h4>⏰ Hours</h4>
-                <p>Tues - Fri: 10am - 7pm<br>Saturday: 8am - 5pm<br><span style="opacity: 0.7;">Sun - Mon: Closed</span></p>
-            </div>
-        </div>
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <h3>Ready to Elevate Your Hair?</h3>
+        <p>Let our experienced stylists help you find the perfect extension solution for your hair type and lifestyle.</p>
+        <a href="tel:4083776000" class="cta-button">Call to Book Your Consultation</a>
+        <span class="cta-phone">Or visit us in Campbell • Walk-ins welcome</span>
     </section>
 
     <!-- Footer -->
@@ -742,9 +730,7 @@
         });
 
         // Header scroll effect
-        let lastScrollTop = 0;
         const header = document.querySelector('header');
-
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             if (scrollTop > 50) {
@@ -752,14 +738,7 @@
             } else {
                 header.style.boxShadow = 'none';
             }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        });
-
-        // Animate hero on load
-        window.addEventListener('load', () => {
-            document.querySelector('.hero-content').style.animation = 'fadeInUp 1s ease-out';
         });
     </script>
 </body>
 </html>
-
